@@ -20,6 +20,9 @@ RSpec.describe 'Merchant Index Page' do
     it 'shows link to show individual merchant' do
       expect(page).to have_link(@merchant_1.name, href: "/merchants/#{@merchant_1.id}")
     end
-  end
+    it 'shows link to create new merchant' do
+      expect(page).to have_link('New Merchant', href: '/merchants/new')
+    end
 
+  end
 end
