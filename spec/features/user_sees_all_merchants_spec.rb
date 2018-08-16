@@ -15,7 +15,8 @@ RSpec.describe 'Merchant Index Page' do
       expect(page).to have_link('Edit', href: "/merchants/#{@merchant_1.id}/edit")
     end
     it 'show link to delete merchant' do
-      
+      expect(page).to have_link('Delete', href: "/merchants/#{@merchant_1.id}/delete")
+    end
   end
 
 end
