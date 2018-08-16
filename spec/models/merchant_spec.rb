@@ -1,9 +1,7 @@
-RSpec.describe Merchant do
+RSpec.describe Merchant,type: :model do
   describe 'Validations' do
-    it 'is invalid without a name' do
-      merchant = Merchant.create
 
-      expect(merchant).to_not be_valid
-    end
+  it {should validate_presence_of(:name)}
+  
   end
 end

@@ -6,14 +6,13 @@ RSpec.describe 'Create Merchant Page' do
     it 'displays new merchant header' do
       expect(page).to have_content('New Merchant')
     end
-    it 'labels input box' do
+    it 'displays merchant page fields' do
       expect(page).to have_content('Merchant Name:')
-    end
-    it 'has a text field' do
-      expect(page).to have_field('merchant[name]')
-    end
-    it 'has a create merchant button' do
-      expect(page).to have_button('Create Merchant')
+
+      fill_in "merchant[name]",with: "Miriam"
+      click_on "Create Merchant"
+      expect(current_path).to eq "/merchants/#{Merchant.last.id}"
+      expect(page).to have_content('Miriam')
     end
   end
 end
