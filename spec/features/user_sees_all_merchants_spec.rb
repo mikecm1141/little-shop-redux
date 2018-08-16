@@ -2,14 +2,20 @@ RSpec.describe 'Merchant Index Page' do
   before(:each) do
     @merchant_1 = Merchant.create(name: 'Big Boots Store')
     @merchant_2 = Merchant.create(name: 'Small Boots Store')
+    visit '/merchants'
   end
   context 'Shows All Merchants Details' do
     it 'shows merchant name' do
-
-      visit '/merchants'
-
       expect(page).to have_content(@merchant_1.name)
       expect(page).to have_content(@merchant_2.name)
     end
   end
+  context 'Shows Merchant Page Details' do
+    it 'shows link to edit merchant' do
+      expect(page).to have_link('Edit', href: "/merchants/#{@merchant_1.id}/edit")
+    end
+    it 'show link to delete merchant' do
+      
+  end
+
 end
