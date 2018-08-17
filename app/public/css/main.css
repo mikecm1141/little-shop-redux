@@ -1,0 +1,20 @@
+.table-fit {
+    width: 1px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: inherit;
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+#jumbo {
+  padding: 30px;
+}
+
+#nav-div-full {
+  width: 100%;
+}

@@ -1,12 +1,35 @@
-<h1>Merchants</h1>
-<h3><a href="/merchants/new">New Merchant</a></h3>
-<% @merchants.each do |merchant| %>
-  <h3><a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a></h3>
-  <form action="/merchants/<%= merchant.id %>/edit" method="GET">
-    <input type="submit" value="Edit">
-  </form>
-  <form action="/merchants/<%= merchant.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form>
-<% end %>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <a href="#">Dashboard</a>
+      </div>
+      <div class="col-sm-4 text-center">
+        <h1 class="display-4">Merchants</h1>
+        <a class="btn btn-primary btn-lrg" href="/merchants/new" role="button">Create A New Merchant</a>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container table-responsive">
+  <table class="table table-hover table-sm table-striped">
+    <tbody>
+      <% @merchants.each do |merchant| %>
+        <tr>
+          <td class="align-middle"><a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a></td>
+          <td class="table-fit">
+            <form action="/merchants/<%= merchant.id %>/edit" method="GET">
+              <input type="submit" value="Edit" class="btn btn-outline-warning btn-sm">
+            </form>
+          </td>
+          <td class="table-fit">
+            <form action="/merchants/<%= merchant.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>
