@@ -39,4 +39,10 @@ class LittleShopApp < Sinatra::Base
     @items = Item.all
     erb :'items/index'
   end
+
+  get '/items/new' do
+    @merchants = Merchant.all
+    erb :'items/new'
+  end
+
 end

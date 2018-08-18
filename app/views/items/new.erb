@@ -1,0 +1,9 @@
+<h1>Create New Item</h1>
+<label>Merchant</label><br />
+<select name="item[merchant]">
+  <% @merchants.each do |merchant| %>
+    <option value="<%= merchant.id %>">
+      <%= merchant.name %>
+    </option>
+  <% end %>
+</select>
