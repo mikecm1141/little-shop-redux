@@ -1,0 +1,22 @@
+<h1>Create New Item</h1>
+<form action="/items/new" method="POST">
+  <label>Merchant</label><br />
+  <select name="item[merchant_id]">
+    <% @merchants.each do |merchant| %>
+      <option value="<%= merchant.id %>">
+        <%= merchant.name %>
+      </option>
+    <% end %>
+  </select><br />
+  <label>Title</label><br />
+  <input type="text" name="item[name]" value=""><br />
+  <label>Description</label><br />
+  <textarea name="item[description]"></textarea><br />
+  <label>Price</label><br />
+  <input type="text" name="item[unit_price]" value=""><br />
+  <label>Image URL</label><br />
+  <input type="text" name="item[image]" value=""><br />
+  <input type="submit" value="Create Item">
+  <a href='/items'>Cancel</a>
+
+</form>

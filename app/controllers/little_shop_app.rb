@@ -39,4 +39,20 @@ class LittleShopApp < Sinatra::Base
     @items = Item.all
     erb :'items/index'
   end
+
+  get '/items/new' do
+    @merchants = Merchant.all
+    erb :'items/new'
+  end
+
+  post '/items/new' do
+    new_item = Item.create(params[:item])
+    redirect "/items/#{new_item.id}"
+  end
+
+  get '/items/:id' do
+    @item = Item.find(params[:id])
+    erb :'items/show'
+  end
+
 end

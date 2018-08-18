@@ -1,7 +1,8 @@
 <h1>Items</h1>
+<a href="/items/new">Create A New Item</a>
 <% @items.each do |item| %>
 <ul>
-  <li><%= item.name %></li>
+  <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
   <li><%= item.unit_price %></li>
   <li><img src="<%= item.image %>"></li>
 </ul>
