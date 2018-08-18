@@ -24,4 +24,13 @@ RSpec.describe 'Item Index Page' do
       expect(page).to have_css("img[src*='#{@item_2.image}']")
     end
   end
+
+  context 'Buttons and Links Navigate Correctly' do
+    it 'has link to create a new item' do
+      visit '/items'
+
+      expect(page).to have_link('Create A New Item', href: '/items/new')
+    end
+    
+  end
 end
