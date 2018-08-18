@@ -37,7 +37,7 @@ RSpec.describe 'Item Index Page' do
       click_on 'Create A New Item'
       expect(current_path).to eq '/items/new'
     end
-    xit 'has link to item show page' do
+    it 'has link to item show page' do
       visit '/items'
 
       click_on @item_1.name

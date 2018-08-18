@@ -13,16 +13,16 @@ RSpec.describe 'Create Item Page' do
       select "#{@merchant_1.name}", from: "item[merchant_id]"
       fill_in "item[name]", with: "Wrench"
       fill_in "item[description]", with: "Fixes things"
-      fill_in "item[unit_price]", with: '10.00'
+      fill_in "item[unit_price]", with: '10.01'
       fill_in "item[image]", with: "test_data"
       click_on "Create Item"
-save_and_open_page
+
       expect(current_path).to eq "/items/#{Item.last.id}"
       expect(page).to have_content 'Wrench'
       expect(page).to have_content 'Fixes things'
       expect(page).to have_content @merchant_1.name
       within('#unit-price') do
-        expect(page).to have_content '$10.00'
+        expect(page).to have_content '$10.01'
       end
       expect(page).to have_css("img[src*='test_data']")
     end
