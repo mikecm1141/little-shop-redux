@@ -31,6 +31,26 @@ RSpec.describe 'Item Index Page' do
 
       expect(page).to have_link('Create A New Item', href: '/items/new')
     end
-    
+    it 'has link that navigates to new item page' do
+      visit '/items'
+
+      click_on 'Create A New Item'
+      expect(current_path).to eq '/items/new'
+    end
+    it 'has link to item show page' do
+      visit '/items'
+
+      click_on @item_1.name
+      expect(current_path).to eq "/items/#{@item_1.id}"
+      expect(page).to have_content @item_1.name
+
+      visit '/items'
+
+      click_on @item_2.name
+      expect(current_path).to eq "/items/#{@item_2.id}"
+      expect(page).to have_content @item_2.name
+
+
+    end
   end
 end
