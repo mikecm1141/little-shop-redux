@@ -1,0 +1,8 @@
+<h1>Items</h1>
+<% @items.each do |item| %>
+<ul>
+  <li><%= item.name %></li>
+  <li><%= item.unit_price %></li>
+  <li><img src="<%= item.image %>"></li>
+</ul>
+<% end %>
