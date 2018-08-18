@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_08_18_175331) do
     t.string "description"
     t.float "unit_price"
     t.integer "merchant_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
