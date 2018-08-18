@@ -17,5 +17,11 @@ RSpec.describe 'Item Index Page' do
       expect(page).to have_content(@item_1.unit_price)
       expect(page).to have_content(@item_2.unit_price)
     end
+    it 'shows item image' do
+      visit '/items'
+
+      expect(page).to have_css("img[src*='#{@item_1.image}']")
+      expect(page).to have_css("img[src*='#{@item_2.image}']")
+    end
   end
 end
