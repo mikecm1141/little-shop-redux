@@ -1,6 +1,29 @@
-<form action="/merchants/<%= @merchant.id %>" method="POST">
-  <label>Merchant Name:</label>
-  <input type="text" name="merchant[name]" value="<%= @merchant.name %>">
-  <input type='hidden' name='_method' value='PUT' />
-  <input type="submit" value="Update Merchant">
-</form>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="display-4">Edit <%= @merchant.name %></h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="d-flex justify-content-center">
+  <div class="form-container">
+    <form action="/merchants/<%= @merchant.id %>" method="POST">
+      <div class="form-group">
+        <label for="name">Name</label><br />
+        <input type="text" name="merchant[name]" value="<%= @merchant.name %>" class="form-control" id="name">
+        <input type='hidden' name='_method' value='PUT' />
+        <div class="spacer"></div>
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <a href="/merchants" class="btn btn-danger">Cancel</a>
+          </div>
+          <div class="col-4">
+            <input type="submit" value="Update Merchant" class="btn btn-warning">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>

@@ -1,17 +1,48 @@
+/* Makes edit and delete buttons fill their cell on merchant index */
 .table-fit {
     width: 1px;
 }
 
-#jumbo {
-  padding: 30px;
+/* Grid container for items view */
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
 }
 
-#nav-div-full {
+.items-container {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+/* Styles images and items for nice view */
+.polaroid img {
   width: 100%;
 }
 
-.item-image {
-  width: 10%;
-  height: 10%;
-  border-radius: 50%;
+.polaroid {
+    width: 80%;
+    background-color: white;
+    margin: 20px;
+    border: 1px solid black;
+}
+
+.form-container {
+  width: 60%;
+}
+
+.spacer {
+  margin: 0;
+  padding: 0;
+  height: 175px;
+}
+
+/* Gives jumbotron on each page a bit of padding all around */
+#jumbo {
+  padding: 10px;
+}
+
+/* Keeps the nav items separated from nav brand name */
+#nav-div-full {
+  width: 100%;
 }
