@@ -3,7 +3,7 @@
 <% @items.each do |item| %>
 <ul>
   <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
-  <li><%= item.unit_price %></li>
-  <li><img src="<%= item.image %>"></li>
+  <li><%= number_to_currency(item.unit_price) %></li>
+  <li><img class="item-image" src="<%= item.image %>"></li>
 </ul>
 <% end %>

@@ -6,3 +6,10 @@
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete">
 </form>
+<% @merchant.items.all.each do |item| %>
+<ul>
+  <li><img src="<%= item.image %>"></li>
+  <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
+  <li id="unit-price-<%= item.id %>"><%= number_to_currency(item.unit_price) %></li>
+</ul>
+<% end %>

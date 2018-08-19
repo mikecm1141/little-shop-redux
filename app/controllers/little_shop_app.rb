@@ -69,5 +69,11 @@ class LittleShopApp < Sinatra::Base
   delete '/items/:id' do |id|
     Item.destroy(id.to_i)
     redirect '/items'
-  end 
+  end
+
+  helpers do
+    def number_to_currency(number)
+      ('$%.2f' % number).to_s
+    end
+  end
 end
