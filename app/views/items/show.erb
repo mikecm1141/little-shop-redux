@@ -7,7 +7,7 @@
 <ul>
   <li><a href="/merchants/<%= @item.merchant_id %>"><%= @item.merchant.name %></a></li>
   <li><%= @item.name %></li>
-  <li id="unit-price">$<%= @item.unit_price %></li>
+  <li id="unit-price"><%= number_to_currency(@item.unit_price) %></li>
   <li><%= @item.description %></li>
   <li><img src="<%= @item.image %>"></li>
 </ul>
