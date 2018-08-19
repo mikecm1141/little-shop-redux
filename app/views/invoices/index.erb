@@ -1,0 +1,19 @@
+<h1>Invoices</h1>
+
+<h2><% @invoices.each do |invoice| %>
+  <ul>
+    <li><a href="/invoices/<%= invoice.merchant_id %>"><%= invoice.merchant_id %></a></li>
+    <li>
+      <form action="/invoices/<%= invoice.merchant_id %>/edit" method="GET">
+        <input type="submit" value="Edit" class="btn btn-outline-warning btn-sm">
+      </form>
+    </li>
+    <li>
+      <form action="/invoices/<%= invoice.merchant_id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm">
+      </form>
+    </li>
+  </ul>
+  <% end %>
+</h2>
