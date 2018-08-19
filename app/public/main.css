@@ -9,3 +9,9 @@
 #nav-div-full {
   width: 100%;
 }
+
+.item-image {
+  width: 10%;
+  height: 10%;
+  border-radius: 50%;
+}
