@@ -3,6 +3,7 @@ RSpec.describe 'Item Index Page' do
     @merchant_1 = Merchant.create(name: 'Mike\'s, Wrenches')
     @item_1 = Item.create(name: 'Wrench', description: 'Fixes things', unit_price: 10.00, merchant_id: 1, image: 'https://www.harborfreight.com/media/catalog/product/i/m/image_16157.jpg')
     @item_2 = Item.create(name: 'Vape', description: 'Vape Nation', unit_price: 56.62, merchant_id: 1, image: 'https://assets.vaping.com/media/catalog/product/cache/1/image/1500x1500/9df78eab33525d08d6e5fb8d27136e95/2/0/2017-01-04-09_44_475596.png')
+    
   end
   context 'Displays Items Details' do
     it 'shows item name' do
