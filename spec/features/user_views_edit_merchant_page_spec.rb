@@ -5,7 +5,7 @@ RSpec.describe 'Edit Merchant Page' do
       merchant = Merchant.create(name:'Nick\'s Curfuffels')
       visit "/merchants/#{Merchant.last.id}/edit"
 
-      expect(page).to have_content('Merchant Name:')
+      expect(page).to have_content('Merchant Name')
       expect(page).to have_field("merchant[name]", with: "#{merchant.name}")
 
       fill_in 'merchant[name]', with: "Nick's Odds and Ends"
