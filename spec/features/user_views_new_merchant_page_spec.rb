@@ -10,7 +10,7 @@ RSpec.describe 'Create Merchant Page' do
     it 'displays merchant page fields' do
       visit '/merchants/new'
 
-      expect(page).to have_content('Merchant Name:')
+      expect(page).to have_content('Merchant Name')
 
       fill_in "merchant[name]", with: "Miriam"
       click_on "Create Merchant"

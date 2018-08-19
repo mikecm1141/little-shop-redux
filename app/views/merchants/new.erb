@@ -1,7 +1,28 @@
-<h1> New Merchant </h1>
-
-<form action="/merchants/new" method="POST">
-  <label> Merchant Name: </label>
-  <input type="text" name="merchant[name]" value="">
-  <input type="submit" value="Create Merchant">
-</form>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="display-4">Create New Merchant</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="d-flex justify-content-center">
+  <div class="form-container">
+    <form action="/merchants/new" method="POST">
+      <div class="form-group">
+        <label for="name">Merchant Name</label><br />
+        <input type="text" name="merchant[name]" value="" class="form-control" id="name">
+        <div class="spacer"></div>
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <a href="/merchants" class="btn btn-danger">Cancel</a>
+          </div>
+          <div class="col-4">
+            <input type="submit" value="Create Merchant" class="btn btn-success">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
