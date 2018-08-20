@@ -48,6 +48,11 @@
   height: 200px;
 }
 
+/* .card-img-top {
+    width: 280px;
+    object-fit: cover;
+} */
+
 /* Gives jumbotron on each page a bit of padding all around */
 #jumbo {
   padding: 25px;
