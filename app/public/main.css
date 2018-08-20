@@ -50,8 +50,7 @@
 
 /* Gives jumbotron on each page a bit of padding all around */
 #jumbo {
-  padding: 10px;
-  height: 200px;
+  padding: 25px;
 }
 
 /* Keeps the nav items separated from nav brand name */
