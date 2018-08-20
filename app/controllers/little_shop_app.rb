@@ -1,6 +1,10 @@
 class LittleShopApp < Sinatra::Base
   set :method_override, true
 
+  get '/' do
+    erb :'index'
+  end
+
   get '/merchants' do
     @merchants = Merchant.all
     erb :'merchants/index'

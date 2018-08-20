@@ -37,9 +37,16 @@
   height: 175px;
 }
 
+.welcome-img
+{
+  width: 359px;
+  height: 202px;
+}
+
 /* Gives jumbotron on each page a bit of padding all around */
 #jumbo {
   padding: 10px;
+  height: 200px;
 }
 
 /* Keeps the nav items separated from nav brand name */
