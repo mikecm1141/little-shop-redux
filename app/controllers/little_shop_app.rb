@@ -76,6 +76,16 @@ class LittleShopApp < Sinatra::Base
     erb :'invoices/index'
   end
 
+  get '/invoices/:id' do |id|
+    @invoice = Invoice.find(id)
+    erb :'invoices/show'
+  end
+
+  put '/invoices/:id/edit' do |id|
+    Invoice.update(id.to_i, params[:id])
+    redirect "/invoices/#{id}"
+  end
+
   helpers do
     def number_to_currency(number)
       ('$%.2f' % number).to_s
