@@ -1,22 +1,41 @@
-<h1>Create New Item</h1>
-<form action="/items/new" method="POST">
-  <label>Merchant</label><br />
-  <select name="item[merchant_id]">
-    <% @merchants.each do |merchant| %>
-      <option value="<%= merchant.id %>">
-        <%= merchant.name %>
-      </option>
-    <% end %>
-  </select><br />
-  <label>Title</label><br />
-  <input type="text" name="item[name]" value=""><br />
-  <label>Description</label><br />
-  <textarea name="item[description]"></textarea><br />
-  <label>Price</label><br />
-  <input type="text" name="item[unit_price]" value=""><br />
-  <label>Image URL</label><br />
-  <input type="text" name="item[image]" value=""><br />
-  <input type="submit" value="Create Item">
-  <a href='/items'>Cancel</a>
-
-</form>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="display-4">Create New Item</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="d-flex justify-content-center">
+  <div class="form-container">
+    <form action="/items/new" method="POST">
+      <div class="form-group">
+        <label for="merchant-name">Merchant</label><br />
+        <select name="item[merchant_id]" class="form-control" id="merchant-name">
+          <% @merchants.each do |merchant| %>
+            <option value="<%= merchant.id %>">
+              <%= merchant.name %>
+            </option>
+          <% end %>
+        </select><br />
+        <label for="item-name">Title</label><br />
+        <input type="text" name="item[name]" value="" class="form-control" id="item-name"><br />
+        <label for="item-description">Description</label><br />
+        <textarea name="item[description]" class="form-control" id="item-description"></textarea><br />
+        <label for="item-unit-price">Price</label><br />
+        <input type="text" name="item[unit_price]" value="" class="form-control" id="item-unit-price"><br />
+        <label for="item-image-url">Image URL</label><br />
+        <input type="text" name="item[image]" value="" class="form-control" id="item-image-url"><br />
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <a href="/items" class="btn btn-danger">Cancel</a>
+          </div>
+          <div class="col-4">
+            <input type="submit" value="Create Item" class="btn btn-success">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>

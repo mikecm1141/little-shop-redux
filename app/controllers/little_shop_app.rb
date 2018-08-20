@@ -6,7 +6,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants' do
-    @merchants = Merchant.all
+    @merchants = Merchant.all.order(:name)
     erb :'merchants/index'
   end
 
@@ -45,7 +45,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items/new' do
-    @merchants = Merchant.all
+    @merchants = Merchant.all.order(:name)
     erb :'items/new'
   end
 
