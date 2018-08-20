@@ -1,9 +1,26 @@
-<h1>Items</h1>
-<a href="/items/new">Create A New Item</a>
-<% @items.each do |item| %>
-<ul>
-  <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
-  <li><%= number_to_currency(item.unit_price) %></li>
-  <li><img class="item-image" src="<%= item.image %>"></li>
-</ul>
-<% end %>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <a href="#">Dashboard</a>
+      </div>
+      <div class="col-sm-4 text-center">
+        <h1 class="display-4">Items</h1>
+        <a class="btn btn-primary btn-lrg" href="/merchants/new" role="button">Create A New Item</a>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="card-columns">
+    <% @items.each do |item| %>
+      <div class="card">
+        <img class="card-img-top" src="<%= item.image %>">
+        <div class="card-body">
+          <h5 class="card-title"><a href="/items/<%= item.id %>"><%= item.name.gsub(/^(.{25,}?).*$/m,'\1...') %></a></h5>
+          <p class="card-text"><%= number_to_currency(item.unit_price) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</main>

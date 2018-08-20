@@ -43,6 +43,11 @@
   height: 202px;
 }
 
+.item-img {
+  width: 200px;
+  height: 200px;
+}
+
 /* Gives jumbotron on each page a bit of padding all around */
 #jumbo {
   padding: 10px;
