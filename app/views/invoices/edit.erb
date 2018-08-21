@@ -1,16 +1,76 @@
-<h1>Invoice: <%= @invoice.id %> - <%= @invoice.status %></h1>
-<form action="/invoices/<%= @invoice.id %>/edit" method="POST">
-  <input type="hidden" name="_method" value="PUT">
-  <label>Merchant</label><br />
-  <select disabled name="invoice[merchant_id]">
-    <% @merchants.each do |merchant| %>
-      <option value="<%= merchant.id %>" <%= 'selected' if merchant.id == @invoice.merchant.id %>>
-        <%= merchant.name %>
-      </option>
-    <% end %>
-  </select><br />
-  <label>Status</label><br />
-  <input type="text" name="invoice[status]" value="<%= @invoice.status %>"><br />
-  <a href='/invoices'>Cancel</a>
-  <input type="submit" value="Update Invoice">
-</form>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="display-4">Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="d-flex justify-content-center">
+  <div class="form-container">
+    <form action="/invoices/<%= @invoice.id %>/edit" method="POST">
+      <div class="form-group">
+        <label for="merchant-name">Merchant</label><br />
+        <select disabled name="invoice[merchant_id]" class="form-control" id="merchant-name">
+          <% @merchants.each do |merchant| %>
+            <option value="<%= merchant.id %>" <%= 'selected' if merchant.id == @invoice.merchant.id %>>
+              <%= merchant.name %>
+            </option>
+          <% end %>
+        </select><br />
+        <label for="invoice-status">Status</label><br />
+        <select name="invoice[status]" class="form-control" id="invoice-status">
+            <option value="shipped">
+              Shipped
+            </option>
+            <option value="pending">
+              Pending
+            </option>
+            <option value="returned">
+              Returned
+            </option>
+        </select><br />
+        <input type='hidden' name='_method' value='PUT' />
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <a href="/invoices/<%= @invoice.id %>" class="btn btn-danger">Cancel</a>
+          </div>
+          <div class="col-4">
+            <input type="submit" value="Update Invoice" class="btn btn-warning">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
+<main class="container">
+  <table class="table table-hover table-sm table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Item ID</th>
+        <th scope="col">Item Title</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">UnitPrice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @invoice.invoice_items.all.each do |invoice_item| %>
+      <tr>
+        <td class="table-fit" id="item-id-<%= invoice_item.item_id %>">
+          <a href="/items/<%= invoice_item.item_id %>"><%= invoice_item.item_id %></a>
+        </td>
+        <td>
+          <%= invoice_item.item.name %>
+        </td>
+        <td class="table-fit" id="invoice-item-quantity-<%= invoice_item.id %>">
+          <%= invoice_item.quantity %>
+        </td>
+        <td class="table-fit">
+          <%= number_to_currency(invoice_item.unit_price) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>

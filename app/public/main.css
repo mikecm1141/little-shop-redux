@@ -1,8 +1,14 @@
+/* Brings the main content container in a bit */
+main.container {
+  width: 90%;
+}
+
 /* Makes edit and delete buttons fill their cell on merchant index */
 .table-fit {
     width: 1px;
 }
 
+/* Makes the card class use 4 columns to display items */
 .item-columns {
   column-count: 4;
 }
@@ -12,6 +18,7 @@
     padding: 10px 20px;
 }
 
+/* A smaller more compact container for forms */
 .form-container {
   width: 60%;
 }
@@ -30,11 +37,6 @@
 {
   width: 359px;
   height: 202px;
-}
-
-.item-img {
-  width: 200px;
-  height: 200px;
 }
 
 /* Gives jumbotron on each page a bit of padding all around */

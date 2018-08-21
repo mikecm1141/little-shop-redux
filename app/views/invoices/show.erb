@@ -1,14 +1,49 @@
-<h1>Invoice: <%= @invoice.id %> - <%= @invoice.status %></h1>
-<h2><a href="/merchants/<%= @invoice.merchant_id %>"><%= @invoice.merchant.name %></a></h2>
-<form action="/invoices/<%= @invoice.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete">
-</form>
-<% @invoice.invoice_items.all.each do |invoice_item| %>
-<ul>
-  <li id="item-id-<%= invoice_item.item_id %>"><%= invoice_item.item_id %></li>
-  <li><%= invoice_item.item.name %></li>
-  <li><%= number_to_currency(invoice_item.unit_price) %></li>
-  <li id="invoice-item-quantity-<%= invoice_item.id %>"><%= invoice_item.quantity %></li>
-</ul>
-<% end %>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="display-4">Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
+        <form action="/invoices/<%= @invoice.id %>/edit" method="GET" class="d-inline">
+          <input type="submit" value="Edit" class="btn btn-warning">
+        </form>
+        <form action="/invoices/<%= @invoice.id %>" method="POST" class="d-inline">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <h3 class="text-center">
+    <a href="/merchants/<%= @invoice.merchant_id %>"><%= @invoice.merchant.name %></a>
+  </h3>
+  <table class="table table-hover table-sm table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Item ID</th>
+        <th scope="col">Item Title</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">UnitPrice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @invoice.invoice_items.all.each do |invoice_item| %>
+      <tr>
+        <td class="table-fit" id="item-id-<%= invoice_item.item_id %>">
+          <a href="/items/<%= invoice_item.item_id %>"><%= invoice_item.item_id %></a>
+        </td>
+        <td>
+          <%= invoice_item.item.name %>
+        </td>
+        <td class="table-fit" id="invoice-item-quantity-<%= invoice_item.id %>">
+          <%= invoice_item.quantity %>
+        </td>
+        <td class="table-fit">
+          <%= number_to_currency(invoice_item.unit_price) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>

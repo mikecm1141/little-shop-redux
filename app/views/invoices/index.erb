@@ -1,19 +1,36 @@
-<h1>Invoices</h1>
-
-<h2><% @invoices.each do |invoice| %>
-  <ul>
-    <li><a href="/invoices/<%= invoice.id %>"><%= invoice.id %></a></li>
-    <li>
-      <form action="/invoices/<%= invoice.id %>/edit" method="GET">
-        <input type="submit" value="Edit" class="btn btn-outline-warning btn-sm">
-      </form>
-    </li>
-    <li>
-      <form action="/invoices/<%= invoice.id %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm">
-      </form>
-    </li>
-  </ul>
-  <% end %>
-</h2>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <a href="#">Dashboard</a>
+      </div>
+      <div class="col-sm-4 text-center">
+        <h1 class="display-4">Invoices</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container table-responsive">
+  <table class="table table-hover table-sm table-striped">
+    <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td class="align-middle">
+            <a href="/invoices/<%= invoice.id %>"><%= invoice.id %></a>
+          </td>
+          <td class="table-fit">
+            <form action="/invoices/<%= invoice.id %>/edit" method="GET">
+              <input type="submit" value="Edit" class="btn btn-outline-warning btn-sm">
+            </form>
+          </td>
+          <td class="table-fit">
+            <form action="/invoices/<%= invoice.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>

@@ -15,7 +15,7 @@ RSpec.describe 'Shows Invoice Page' do
     it 'shows invoice status' do
       visit "/invoices/#{Invoice.first.id}"
 
-      expect(page).to have_content("#{@invoice_1.status}")
+      expect(page).to have_content("#{@invoice_1.status.capitalize}")
     end
     it 'shows invoice merchant' do
       visit "/invoices/#{Invoice.first.id}"
@@ -62,7 +62,7 @@ RSpec.describe 'Shows Invoice Page' do
       within("#invoice-item-quantity-#{@invoice_item_1.id}") do
         expect(page).to have_content("5")
       end
-      within("#invoice-item-quantity-#{@invoice_item_2.id}") do 
+      within("#invoice-item-quantity-#{@invoice_item_2.id}") do
         expect(page).to have_content("5")
       end
     end
