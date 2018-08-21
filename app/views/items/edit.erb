@@ -1,24 +1,42 @@
-<h1>Edit <%= @item.name %></h1>
-<form action="/items/<%= @item.id %>/edit" method="POST">
-  <input type="hidden" name="_method" value="PUT">
-  <label>Merchant</label><br />
-  <select name="item[merchant_id]">
-    <% @merchants.each do |merchant| %>
-      <option value="<%= merchant.id %>" <%= 'selected' if merchant.id == @item.merchant_id %>>
-        <%= merchant.name %>
-      </option>
-    <% end %>
-  </select><br />
-  <label>Title</label><br />
-  <input type="text" name="item[name]" value="<%= @item.name %>"><br />
-  <label>Description</label><br />
-  <textarea name="item[description]"><%= @item.description %></textarea><br />
-  <label>Price</label><br />
-  <input type="text" name="item[unit_price]" value="<%= @item.unit_price %>"><br />
-  <label>Image URL</label><br />
-  <input type="text" name="item[image]" value="<%= @item.image %>"><br />
-  <input type="submit" value="Update">
-
-  <a href='/items'>Cancel</a>
-
-</form>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2>Edit <%= @item.name %></h2>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="d-flex justify-content-center">
+  <div class="form-container">
+    <form action="/items/<%= @item.id %>/edit" method="POST">
+      <div class="form-group">
+        <input type="hidden" name="_method" value="PUT">
+        <label for="merchant-name">Merchant</label><br />
+        <select name="item[merchant_id]" class="form-control" id="merchant-name">
+          <% @merchants.each do |merchant| %>
+            <option value="<%= merchant.id %>" <%= 'selected' if merchant.id == @item.merchant_id %>>
+              <%= merchant.name %>
+            </option>
+          <% end %>
+        </select><br />
+        <label for="item-name">Title</label><br />
+        <input type="text" name="item[name]" value="<%= @item.name %>" class="form-control" id="item-name"><br />
+        <label for="item-description">Description</label><br />
+        <textarea name="item[description]" class="form-control" id="item-description"><%= @item.description %></textarea><br />
+        <label for="item-unit-price">Price</label><br />
+        <input type="text" name="item[unit_price]" value="<%= @item.unit_price %>" class="form-control" id="item-unit-price"><br />
+        <label for="item-image-url">Image URL</label><br />
+        <input type="text" name="item[image]" value="<%= @item.image %>" class="form-control" id="item-image-url"><br />
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <a href="/items" class="btn btn-danger">Cancel</a>
+          </div>
+          <div class="col-4">
+            <input type="submit" value="Update Item" class="btn btn-warning">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>

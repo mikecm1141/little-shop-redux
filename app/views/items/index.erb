@@ -12,12 +12,12 @@
   </div>
 </header>
 <main class="container">
-  <div class="card-columns">
+  <div class="card-columns item-columns">
     <% @items.each do |item| %>
       <div class="card">
         <img class="card-img-top" src="<%= item.image %>">
         <div class="card-body">
-          <h5 class="card-title"><a href="/items/<%= item.id %>"><%= item.name.gsub(/^(.{25,}?).*$/m,'\1...') %></a></h5>
+          <h5 class="card-title"><a href="/items/<%= item.id %>" title="<%= item.name %>"><%= item.name.gsub(/^(.{16,}?).*$/m,'\1...') %></a></h5>
           <p class="card-text"><%= number_to_currency(item.unit_price) %></p>
         </div>
       </div>

@@ -2,15 +2,21 @@ class LittleShopApp < Sinatra::Base
   set :method_override, true
 
   get '/' do
-    erb :'index'
+    @merchant_time = Merchant.last_updated
+    @item_time     = Item.last_updated
+    @invoice_time  = Invoice.last_updated
+    @title = 'Welcome to Little Shop'
+    erb :'welcome'
   end
 
   get '/merchants' do
-    @merchants = Merchant.all
+    @merchants = Merchant.all.order(:name)
+    @title = 'Little Shop - Merchant Index'
     erb :'merchants/index'
   end
 
   get '/merchants/new' do
+    @title = 'Little Shop - Create A New Merchant'
     erb :'merchants/new'
   end
 
@@ -21,11 +27,13 @@ class LittleShopApp < Sinatra::Base
 
   get '/merchants/:id' do
     @merchant = Merchant.find(params[:id])
+    @title    = "Little Shop - #{@merchant.name}"
     erb :'merchants/show'
   end
 
   get '/merchants/:id/edit' do
     @merchant = Merchant.find(params[:id])
+    @title    = "Little Shop - Edit #{@merchant.name}"
     erb :'merchants/edit'
   end
 
@@ -41,11 +49,13 @@ class LittleShopApp < Sinatra::Base
 
   get '/items' do
     @items = Item.all
+    @title = 'Little Shop - Item Index'
     erb :'items/index'
   end
 
   get '/items/new' do
-    @merchants = Merchant.all
+    @merchants = Merchant.all.order(:name)
+    @title     = 'Little Shop - Create A New Item'
     erb :'items/new'
   end
 
@@ -55,13 +65,15 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items/:id' do
-    @item = Item.find(params[:id])
+    @item  = Item.find(params[:id])
+    @title = "Little Shop - #{@item.name}"
     erb :'items/show'
   end
 
   get '/items/:id/edit' do
     @item = Item.find(params[:id])
     @merchants = Merchant.all
+    @title     = "Little Shop - Edit #{@item.name}"
     erb :'items/edit'
   end
 
@@ -108,6 +120,7 @@ class LittleShopApp < Sinatra::Base
 
   helpers do
     def number_to_currency(number)
+      number = (number.to_f/100)
       ('$%.2f' % number).to_s
     end
   end

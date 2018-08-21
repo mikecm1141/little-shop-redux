@@ -1,13 +1,29 @@
-<h1><%= @item.name %></h1>
-<a href="/items/<%= @item.id %>/edit">Edit</a>
-<form action="/items/<%= @item.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete">
-</form>
-<ul>
-  <li><a href="/merchants/<%= @item.merchant_id %>"><%= @item.merchant.name %></a></li>
-  <li><%= @item.name %></li>
-  <li id="unit-price"><%= number_to_currency(@item.unit_price) %></li>
-  <li><%= @item.description %></li>
-  <li><img src="<%= @item.image %>"></li>
-</ul>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2><%= @item.name %></h2>
+        <form action="/items/<%= @item.id %>/edit" method="GET" class="d-inline">
+          <input type="submit" value="Edit" class="btn btn-warning">
+        </form>
+        <form action="/items/<%= @item.id %>" method="POST" class="d-inline">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container item-view-container">
+  <div class="row">
+    <div class="col-sm-6">
+      <a class="float-right" href="/merchants/<%= @item.merchant_id %>"><h3><%= @item.merchant.name %></h3></a><br />
+      <img class="float-right" src="/<%= @item.image %>">
+    </div>
+    <div class="col-sm-6">
+      <h3><%= @item.name %></h3>
+      <p id="unit-price"><%= number_to_currency(@item.unit_price) %></p>
+      <p><%= @item.description %></p>
+    </div>
+  </div>
+</main>

@@ -33,4 +33,8 @@ class Invoice < ActiveRecord::Base
     lowest_price.id
   end
 
+  def self.last_updated
+    maximum(:updated_at)
+  end
+
 end
