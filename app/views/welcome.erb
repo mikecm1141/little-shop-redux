@@ -12,31 +12,31 @@
     <div class="card">
       <a href="/merchants"><img class="card-img-top welcome-img" src="merchant.jpg" alt="Merchants"></a>
       <div class="card-body">
-        <h5 class="card-title"><a href="/merchants">Merchants</a></h5>
+        <h5 class="card-title" id="merchant-card"><a href="/merchants">Merchants</a></h5>
         <p class="card-text">View a list of all merchants, get details on a particular merchant, create and edit merchants, or delete a merchant.</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted" id="merchant-card-updated-at">Last Updated: <%= @merchant_time %></small>
       </div>
     </div>
     <div class="card">
       <a href="/items"><img class="card-img-top welcome-img" src="items.jpg" alt="Items"></a>
       <div class="card-body">
-        <h5 class="card-title"><a href="/items">Items</a></h5>
+        <h5 class="card-title" id="item-card"><a href="/items">Items</a></h5>
         <p class="card-text">View a list of all items, get details on a particular item, create, edit, and delete items.</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted" id="item-card-updated-at">Last Updated: <%= @item_time %></small>
       </div>
     </div>
     <div class="card">
       <a href="/invoices"><img class="card-img-top welcome-img" src="invoice.jpg" alt="Card image cap"></a>
       <div class="card-body">
-        <h5 class="card-title"><a href="/invoices">Invoices</a></h5>
+        <h5 class="card-title" id="invoice-card"><a href="/invoices">Invoices</a></h5>
         <p class="card-text">See all invoices, edit and delete invoices, and see their status.</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted" id="invoice-card-updated-at">Last Updated: <%= @invoice_time %></small>
       </div>
     </div>
   </div>
