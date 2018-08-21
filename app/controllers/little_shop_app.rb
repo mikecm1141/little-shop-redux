@@ -118,6 +118,12 @@ class LittleShopApp < Sinatra::Base
     erb :'invoices/dashboard'
   end
 
+  get '/merchants-dashboard' do
+    @merchant = Merchant
+    @merchants = Merchant.all
+    erb :'merchants/dashboard'
+  end
+
   helpers do
     def number_to_currency(number)
       number = (number.to_f/100)

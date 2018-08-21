@@ -1,0 +1,18 @@
+<h1>Merchant Dashboard</h1>
+
+<h3>Merchant With Most Items:</h3>
+  <ul>
+    <li><%= @merchant.most_items.name %></li>
+  </ul>
+<h3>Merchant With Highest Price Item</h3>
+  <ul>
+    <li><%= @merchant.highest_priced_item.name %></li>
+  </ul>
+  <% @merchants.each do |merchant| %>
+<ul>
+  <li><%= merchant.name %></li>
+  <li id="merchant-item-count-<%= merchant.id %>">Item Count: <%= merchant.merchant_item_count %></li>
+  <li id="merchant-average-price-<%= merchant.id %>">Avg Item Price: <%= number_to_currency(merchant.item_averages) %></li>
+  <li id="merchant-total-cost-<%= merchant.id %>">Total Cost of Items: <%= number_to_currency(merchant.total_merchant_price) %></li>
+</ul>
+<% end %>
