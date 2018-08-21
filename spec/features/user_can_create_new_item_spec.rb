@@ -13,7 +13,7 @@ RSpec.describe 'Create Item Page' do
       select "#{@merchant_1.name}", from: "item[merchant_id]"
       fill_in "item[name]", with: "Wrench"
       fill_in "item[description]", with: "Fixes things"
-      fill_in "item[unit_price]", with: '10.01'
+      fill_in "item[unit_price]", with: '1001'
       fill_in "item[image]", with: "test_data"
       click_on "Create Item"
 

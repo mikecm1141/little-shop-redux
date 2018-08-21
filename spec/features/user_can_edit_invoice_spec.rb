@@ -25,7 +25,7 @@ RSpec.describe 'User Can Edit Invoice' do
     end
     it 'updates invoice information' do
       visit "/invoices/#{@invoice_1.id}/edit"
-save_and_open_page
+
       fill_in "invoice[status]", with: "returned"
       click_on "Update Invoice"
 

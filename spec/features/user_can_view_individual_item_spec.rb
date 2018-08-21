@@ -1,7 +1,7 @@
 RSpec.describe 'Item Show Page' do
   before(:each) do
     @merchant_1 = Merchant.create(name: 'Mike\'s, Wrenches')
-    @item_1 = Item.create(name: 'Wrench', description: 'Fixes things', unit_price: 10.00, merchant_id: 1, image: 'https://www.harborfreight.com/media/catalog/product/i/m/image_16157.jpg')
+    @item_1 = Item.create(name: 'Wrench', description: 'Fixes things', unit_price: "1000", merchant_id: 1, image: 'https://www.harborfreight.com/media/catalog/product/i/m/image_16157.jpg')
   end
 
   context 'Displays Items Details' do
@@ -18,7 +18,7 @@ RSpec.describe 'Item Show Page' do
     it 'shows item price' do
       visit "/items/#{@item_1.id}"
 
-      expect(page).to have_content(@item_1.unit_price)
+      expect(page).to have_content("$10.00")
     end
     it 'shows item description' do
       visit "/items/#{@item_1.id}"
