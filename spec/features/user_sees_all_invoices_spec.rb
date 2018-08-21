@@ -4,10 +4,10 @@ RSpec.describe 'Invoice Index Page' do
     @invoice_2 = Invoice.create(customer_id: 2, merchant_id: 23456, status: "pending")
   end
   context 'Displays Invoice Details' do
-    it 'shows merchant id' do
+    it 'shows invoice id' do
       visit '/invoices'
-      
-      expect(page).to have_content('12345')
+
+      expect(page).to have_content(@invoice_1.id)
     end
   end
   context 'shows invoice buttons' do
