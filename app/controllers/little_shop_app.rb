@@ -101,6 +101,11 @@ class LittleShopApp < Sinatra::Base
     redirect '/invoices'
   end
 
+  get '/invoices-dashboard' do
+    @invoices = Invoice
+    erb :'invoices/dashboard'
+  end
+
   helpers do
     def number_to_currency(number)
       ('$%.2f' % number).to_s
