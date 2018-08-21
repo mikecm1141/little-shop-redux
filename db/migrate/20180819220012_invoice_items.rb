@@ -4,7 +4,7 @@ class InvoiceItems < ActiveRecord::Migration[5.2]
       t.integer  :item_id
       t.integer  :invoice_id
       t.integer  :quantity
-      t.float    :unit_price
+      t.string    :unit_price
 
       t.timestamps null: false
     end

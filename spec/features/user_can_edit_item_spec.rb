@@ -1,8 +1,8 @@
 RSpec.describe 'Edit Item Page' do
   context 'Edit Item Page Details' do
     before(:each) do
-      @item_1 = Item.create(name: 'Wrench', description: 'Fixes things', unit_price: 10.00, merchant_id: 1, image: 'test_data')
-      @item_2 = Item.create(name: 'Vape', description: 'Vape Nation', unit_price: 56.62, merchant_id: 2, image: 'https://assets.vaping.com/media/catalog/product/cache/1/image/1500x1500/9df78eab33525d08d6e5fb8d27136e95/2/0/2017-01-04-09_44_475596.png')
+      @item_1 = Item.create(name: 'Wrench', description: 'Fixes things', unit_price: "1000", merchant_id: 1, image: 'test_data')
+      @item_2 = Item.create(name: 'Vape', description: 'Vape Nation', unit_price: "5662", merchant_id: 2, image: 'https://assets.vaping.com/media/catalog/product/cache/1/image/1500x1500/9df78eab33525d08d6e5fb8d27136e95/2/0/2017-01-04-09_44_475596.png')
       @merchant_1 = Merchant.create(name: 'Big Boots Store')
       @merchant_2 = Merchant.create(name: 'Small Boots Store')
     end
@@ -23,7 +23,7 @@ RSpec.describe 'Edit Item Page' do
       select "#{@merchant_1.name}", from: "item[merchant_id]"
       fill_in "item[name]", with: "Wrench"
       fill_in "item[description]", with: "Fixes things"
-      fill_in "item[unit_price]", with: '10.01'
+      fill_in "item[unit_price]", with: '1001'
       fill_in "item[image]", with: "test_data"
       click_on "Update"
 
