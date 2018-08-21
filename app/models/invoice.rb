@@ -33,6 +33,20 @@ class Invoice < ActiveRecord::Base
     lowest_price.id
   end
 
+  def self.highest_quantity
+    highest_quantity = Invoice.all.max_by do |invoice|
+      invoice.invoice_items.maximum(:quantity)
+    end
+    highest_quantity.id
+  end
+
+  def self.lowest_quantity
+    lowest_quantity = Invoice.all.min_by do |invoice|
+      invoice.invoice_items.minimum(:quantity)
+    end
+    lowest_quantity.id
+  end
+
   def self.last_updated
     maximum(:updated_at)
   end

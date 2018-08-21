@@ -1,0 +1,17 @@
+<h1>Total Item Count</h1>
+  <ul>
+    <li><%= @items.total_item_count %></li>
+  </ul>
+<h1>Average Price Per Item</h1>
+  <ul>
+    <li>$<%= @items.average_price %></li>
+  </ul>
+<h1>Item By Age</h1>
+<h2>Newest</h2>
+<ul>
+  <li><%= @items.newest_item %></li>
+</ul>
+<h2>Oldest</h2>
+<ul>
+  <li><%= @items.oldest_item %></li>
+</ul>
