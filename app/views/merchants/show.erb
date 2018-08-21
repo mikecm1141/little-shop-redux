@@ -15,12 +15,14 @@
   </div>
 </header>
 <main class="container">
-  <div class="grid-container items-container">
+  <div class="card-columns">
     <% @merchant.items.all.each do |item| %>
-      <div class="polaroid">
-        <img src="<%= item.image %>">
-        <a href="/items/<%= item.id %>"><%= item.name %></a><br />
-        <span id="unit-price-<%= item.id %>"><%= number_to_currency(item.unit_price) %>
+      <div class="card">
+        <img class="card-img-top" src="/<%= item.image %>">
+        <div class="card-body">
+          <h5 class="card-title"><a href="/items/<%= item.id %>" title="<%= item.name %>"><%= item.name.gsub(/^(.{25,}?).*$/m,'\1...') %></a></h5><br />
+          <p class="card-text" id="unit-price-<%= item.id %>"><%= number_to_currency(item.unit_price) %></p>
+        </div>
       </div>
     <% end %>
   </div>
