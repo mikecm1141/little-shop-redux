@@ -77,6 +77,11 @@ class LittleShopApp < Sinatra::Base
     erb :'items/edit'
   end
 
+  get '/items-dashboard' do
+    @items = Item
+    erb :'items/dashboard'
+  end
+  
   put '/items/:id/edit' do |id|
     Item.update(id.to_i, params[:item])
     redirect "items/#{id}"
