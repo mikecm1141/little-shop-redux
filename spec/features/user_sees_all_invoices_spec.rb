@@ -6,6 +6,7 @@ RSpec.describe 'Invoice Index Page' do
   context 'Displays Invoice Details' do
     it 'shows merchant id' do
       visit '/invoices'
+      
       expect(page).to have_content('12345')
     end
   end

@@ -1,0 +1,16 @@
+<h1>Invoice: <%= @invoice.id %> - <%= @invoice.status %></h1>
+<form action="/invoices/<%= @invoice.id %>/edit" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <label>Merchant</label><br />
+  <select disabled name="invoice[merchant_id]">
+    <% @merchants.each do |merchant| %>
+      <option value="<%= merchant.id %>" <%= 'selected' if merchant.id == @invoice.merchant.id %>>
+        <%= merchant.name %>
+      </option>
+    <% end %>
+  </select><br />
+  <label>Status</label><br />
+  <input type="text" name="invoice[status]" value="<%= @invoice.status %>"><br />
+  <a href='/invoices'>Cancel</a>
+  <input type="submit" value="Update Invoice">
+</form>
