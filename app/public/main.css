@@ -3,28 +3,13 @@
     width: 1px;
 }
 
-/* Grid container for items view */
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  padding: 10px;
+.item-columns {
+  column-count: 4;
 }
 
 .items-container {
     text-align: center;
     padding: 10px 20px;
-}
-
-/* Styles images and items for nice view */
-.polaroid img {
-  width: 100%;
-}
-
-.polaroid {
-    width: 80%;
-    background-color: white;
-    margin: 20px;
-    border: 1px solid black;
 }
 
 .form-container {
@@ -51,11 +36,6 @@
   width: 200px;
   height: 200px;
 }
-
-/* .card-img-top {
-    width: 280px;
-    object-fit: cover;
-} */
 
 /* Gives jumbotron on each page a bit of padding all around */
 #jumbo {
