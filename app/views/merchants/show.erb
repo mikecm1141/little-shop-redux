@@ -20,7 +20,7 @@
       <div class="card">
         <img class="card-img-top" src="/<%= item.image %>">
         <div class="card-body">
-          <h5 class="card-title"><a href="/items/<%= item.id %>" title="<%= item.name %>"><%= item.name.gsub(/^(.{24,}?).*$/m,'\1...') %></a></h5><br />
+          <h6 class="card-title h6"><a href="/items/<%= item.id %>" title="<%= item.name %>"><%= item.name.gsub(/^(.{16,}?).*$/m,'\1...') %></a></h6><br />
           <p class="card-text" id="unit-price-<%= item.id %>"><%= number_to_currency(item.unit_price) %></p>
         </div>
       </div>

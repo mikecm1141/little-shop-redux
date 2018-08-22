@@ -15,22 +15,21 @@ RSpec.describe 'User Can Edit Invoice' do
     it 'shows invoice status' do
       visit "/invoices/#{Invoice.first.id}"
 
-      expect(page).to have_content("#{@invoice_1.status}")
+      expect(page).to have_content("#{@invoice_1.status.capitalize}")
     end
     it 'displays edit item fields' do
       visit "/invoices/#{@invoice_1.id}/edit"
 
-      # expect(page).to have_field('invoice[merchant_id]', with: @invoice_1.merchant_id)
       expect(page).to have_field('invoice[status]', with: @invoice_1.status)
     end
     it 'updates invoice information' do
       visit "/invoices/#{@invoice_1.id}/edit"
 
-      fill_in "invoice[status]", with: "returned"
+      select "Returned", from: "invoice[status]"
       click_on "Update Invoice"
 
       expect(current_path).to eq "/invoices/#{@invoice_1.id}"
-      expect(page).to have_content 'returned'
+      expect(page).to have_content 'Returned'
     end
   end
 end
