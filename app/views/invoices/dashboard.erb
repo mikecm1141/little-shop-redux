@@ -1,25 +1,45 @@
-<h1>Invoices Dashboard</h1>
-<h2>Status Percentages</h2>
-<ul>
-  <li>Pending <%= @invoices.percent_pending %></li>
-  <li>Shipped <%= @invoices.percent_shipped %></li>
-  <li>Returned <%= @invoices.percent_returned %></li>
-</ul>
-<h2>Unit Prices</h2>
-<h3>Highest</h3>
-  <ul>
-    <li>Invoice: <%= @invoices.highest_price %></li>
-  </ul>
-<h3>Lowest</h3>
-  <ul>
-    <li>Invoice: <%= @invoices.lowest_price %></li>
-  </ul>
-<h2>Quantity</h2>
-<h3>Highest</h3>
-  <ul>
-    <li>Invoice: <%= @invoices.highest_quantity %></li>
-  </ul>
-<h3>Lowest</h3>
-  <ul>
-    <li>Invoice: <%= @invoices.lowest_quantity %></li>
-  </ul>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="display-4">Invoices Dashboard</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="card-columns">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title h5 text-center">Status Percentages</h5>
+        <p class="card-text">
+          Pending: <%= @invoices.percent_pending %><br />
+          Shipped: <%= @invoices.percent_shipped %><br />
+          Returned: <%= @invoices.percent_returned %><br />
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title h5 text-center">Unit Prices</h5>
+        <p class="card-text">
+          <u>Highest</u><br />
+          Invoice: <a href="/invoices/<%= @invoices.highest_price.id %>"><%= @invoices.highest_price.id %></a><br /><br />
+          <u>Lowest</u><br />
+          Invoice: <a href="/invoices/<%= @invoices.lowest_price.id %>"><%= @invoices.lowest_price.id %></a>
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title h5 text-center">Quantity</h5>
+        <p class="card-text">
+          <u>Highest</u><br />
+          Invoice: <a href="/invoices/<%= @invoices.highest_quantity.invoice_id %>"><%= @invoices.highest_quantity.invoice_id %></a><br /><br />
+          <u>Lowest</u><br />
+          Invoice: <a href="/invoices/<%= @invoices.lowest_quantity.invoice_id %>"><%= @invoices.lowest_quantity.invoice_id %></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
