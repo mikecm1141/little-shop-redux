@@ -27,12 +27,12 @@ RSpec.describe Item,type: :model do
       expect(total).to eq(20)
     end
     it '.newest_item' do
-      total = Item.newest_item
+      total = Item.newest_item.name
 
       expect(total).to eq('Hammer')
     end
     it '.oldest_item' do
-      total = Item.oldest_item
+      total = Item.oldest_item.name
 
       expect(total).to eq('Wrench')
     end

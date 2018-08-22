@@ -12,7 +12,6 @@ RSpec.describe 'Show Merchant Dashboard Page' do
       visit '/merchants-dashboard'
 
       expect(page).to have_content(merchant_1.name)
-      expect(page).to have_content(merchant_2.name)
       within("#merchant-item-count-#{merchant_1.id}") do
         expect(page).to have_content(merchant_1.merchant_item_count)
       end

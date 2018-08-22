@@ -1,18 +1,48 @@
-<h1>Merchant Dashboard</h1>
-
-<h3>Merchant With Most Items:</h3>
-  <ul>
-    <li><%= @merchant.most_items.name %></li>
-  </ul>
-<h3>Merchant With Highest Price Item</h3>
-  <ul>
-    <li><%= @merchant.highest_priced_item.name %></li>
-  </ul>
-  <% @merchants.each do |merchant| %>
-<ul>
-  <li><%= merchant.name %></li>
-  <li id="merchant-item-count-<%= merchant.id %>">Item Count: <%= merchant.merchant_item_count %></li>
-  <li id="merchant-average-price-<%= merchant.id %>">Avg Item Price: <%= number_to_currency(merchant.item_averages) %></li>
-  <li id="merchant-total-cost-<%= merchant.id %>">Total Cost of Items: <%= number_to_currency(merchant.total_merchant_price) %></li>
-</ul>
-<% end %>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="display-4">Merchants Dashboard</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="alert alert-dark">
+    <div class="row">
+      <div class="col-sm-6">
+        <h5>Merchant With Most Items:</h5>
+        <a href="/merchants/<%= @merchant.most_items.id %>"><%= @merchant.most_items.name %></a>
+      </div>
+      <div class="col-sm-6">
+        <h5>Merchant With Highest Price Item:</h5>
+        <a href="/merchants/<%= @merchant.highest_priced_item.id %>"><%= @merchant.highest_priced_item.name %></a>
+      </div>
+    </div>
+  </div>
+  <div class="card-columns item-columns">
+    <% @merchants.each do |merchant| %>
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title h6">
+            <a href="/merchant/<%= merchant.id %>" title="<%= merchant.name %>">
+              <%= shorten_name(merchant.name) %>
+            </a>
+          </h6>
+          <p class="card-text" id="merchant-item-count-<%= merchant.id %>">
+            <u>Item Count:</u><br />
+            <%= merchant.merchant_item_count %>
+          </p>
+          <p class="card-text" id="merchant-average-price-<%= merchant.id %>">
+            <u>Avg Item Price:</u><br />
+            <%= number_to_currency(merchant.item_averages) %>
+          </p>
+          <p class="card-text" id="merchant-total-cost-<%= merchant.id %>">
+            <u>Total Cost of Items:</u><br />
+            <%= number_to_currency(merchant.total_merchant_price) %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</main>

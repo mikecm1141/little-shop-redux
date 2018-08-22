@@ -1,4 +1,15 @@
 RSpec.describe Invoice, type: :model do
+  before(:each) do
+    @invoice_1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'pending')
+    @invoice_2 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'pending')
+    @invoice_3 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'returned')
+    @invoice_4 = Invoice.create(customer_id: 3, merchant_id: 1, status: 'shipped')
+    @invoice_item_1 = @invoice_1.invoice_items.create(item_id: 1, quantity: 2, unit_price: "100")
+    @invoice_item_2 = @invoice_2.invoice_items.create(item_id: 2, quantity: 3, unit_price: "200")
+    @invoice_item_3 = @invoice_3.invoice_items.create(item_id: 3, quantity: 4, unit_price: "300")
+    @invoice_item_4 = @invoice_4.invoice_items.create(item_id: 3, quantity: 5, unit_price: "250")
+    @invoice_item_5 = @invoice_4.invoice_items.create(item_id: 5, quantity: 2, unit_price: "300")
+  end
   describe 'Validations' do
     it 'has one merchant' do
       association = described_class.reflect_on_association(:merchant)
@@ -8,17 +19,14 @@ RSpec.describe Invoice, type: :model do
     it {should validate_presence_of(:merchant_id)}
     it {should validate_presence_of(:status)}
   end
-  describe 'Class Methods' do
-    before(:each) do
-      @invoice_1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'pending')
-      @invoice_2 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'pending')
-      @invoice_3 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'returned')
-      @invoice_4 = Invoice.create(customer_id: 3, merchant_id: 1, status: 'shipped')
-      @invoice_item_1 = InvoiceItem.create(item_id: 1, invoice_id: 1, quantity: 2, unit_price: "100")
-      @invoice_item_2 = InvoiceItem.create(item_id: 2, invoice_id: 2, quantity: 3, unit_price: "200")
-      @invoice_item_3 = InvoiceItem.create(item_id: 3, invoice_id: 3, quantity: 4, unit_price: "300")
-      @invoice_item_4 = InvoiceItem.create(item_id: 3, invoice_id: 4, quantity: 5, unit_price: "250")
+  describe 'Instance Methods' do
+    it '#invoice_total' do
+      invoice_total = @invoice_4.invoice_total / 100.to_f
+
+      expect(invoice_total).to eq(18.5)
     end
+  end
+  describe 'Class Methods' do
     it '.last_updated' do
       last_updated = Invoice.last_updated
 
@@ -40,21 +48,21 @@ RSpec.describe Invoice, type: :model do
       expect(returned).to eq(25)
     end
     it 'should show highest_price' do
-      highest = Invoice.highest_price
+      highest = Invoice.highest_price.id
 
       expect(highest).to eq(3)
     end
     it 'should show lowest_price' do
-      lowest = Invoice.lowest_price
+      lowest = Invoice.lowest_price.id
 
       expect(lowest).to eq(1)
     end
-    it 'should show highest_quantity' do
+    xit 'should show highest_quantity' do
       highest = Invoice.highest_quantity
 
       expect(highest).to eq(4)
     end
-    it 'should show lowest_quantity' do
+    xit 'should show lowest_quantity' do
       lowest = Invoice.lowest_quantity
 
       expect(lowest).to eq(1)

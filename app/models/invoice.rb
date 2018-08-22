@@ -3,48 +3,43 @@ class Invoice < ActiveRecord::Base
   has_many :invoice_items
   validates_presence_of :customer_id, :merchant_id, :status
 
+  def invoice_total
+    invoice_items.inject(0) do |sum, invoice_item|
+      sum + invoice_item.unit_price.to_i * invoice_item.quantity
+    end
+  end
+
   def self.total_invoices
-    Invoice.count
+    count
   end
 
   def self.percent_pending
-    (Invoice.where(status: 'pending').count.to_f / Invoice.total_invoices * 100).round
+    (where(status: 'pending').count.to_f / total_invoices * 100).round
   end
 
   def self.percent_shipped
-    (Invoice.where(status: 'shipped').count.to_f / Invoice.total_invoices * 100).round
+    (where(status: 'shipped').count.to_f / total_invoices * 100).round
   end
 
   def self.percent_returned
-    (Invoice.where(status: 'returned').count.to_f / Invoice.total_invoices * 100).round
+    (where(status: 'returned').count.to_f / total_invoices * 100).round
   end
 
   def self.highest_price
-    highest_price = Invoice.all.max_by do |invoice|
-      invoice.invoice_items.maximum(:unit_price)
-    end
-    highest_price.id
+    joins(:invoice_items).order("invoice_items.unit_price DESC").limit(1).first
   end
 
   def self.lowest_price
-    lowest_price = Invoice.all.min_by do |invoice|
-      invoice.invoice_items.minimum(:unit_price)
-    end
-    lowest_price.id
+    joins(:invoice_items).order("invoice_items.unit_price").limit(1).first
+
   end
 
   def self.highest_quantity
-    highest_quantity = Invoice.all.max_by do |invoice|
-      invoice.invoice_items.maximum(:quantity)
-    end
-    highest_quantity.id
+    InvoiceItem.select("invoice_items.*, sum(quantity) AS quantity_sum").joins(:item).group(:invoice_id, :id).order("quantity_sum DESC").limit(1).first
   end
 
   def self.lowest_quantity
-    lowest_quantity = Invoice.all.min_by do |invoice|
-      invoice.invoice_items.minimum(:quantity)
-    end
-    lowest_quantity.id
+    InvoiceItem.select("invoice_items.*, sum(quantity) AS quantity_sum").joins(:item).group(:invoice_id, :id).order("quantity_sum").limit(1).first
   end
 
   def self.last_updated

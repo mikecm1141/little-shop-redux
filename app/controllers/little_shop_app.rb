@@ -79,9 +79,10 @@ class LittleShopApp < Sinatra::Base
 
   get '/items-dashboard' do
     @items = Item
+    @title = 'Little Shop - Items Dashboard'
     erb :'items/dashboard'
   end
-  
+
   put '/items/:id/edit' do |id|
     Item.update(id.to_i, params[:item])
     redirect "items/#{id}"
@@ -120,12 +121,14 @@ class LittleShopApp < Sinatra::Base
 
   get '/invoices-dashboard' do
     @invoices = Invoice
+    @title = 'Little Shop - Items Dashboard'
     erb :'invoices/dashboard'
   end
 
   get '/merchants-dashboard' do
     @merchant = Merchant
     @merchants = Merchant.all
+    @title = 'Little Shop - Merchants Dashboard'
     erb :'merchants/dashboard'
   end
 
@@ -133,6 +136,9 @@ class LittleShopApp < Sinatra::Base
     def number_to_currency(number)
       number = (number.to_f/100)
       ('$%.2f' % number).to_s
+    end
+    def shorten_name(name)
+      name.gsub(/^(.{15,}?).*$/m,'\1...')
     end
   end
 end

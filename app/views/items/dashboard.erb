@@ -1,17 +1,39 @@
-<h1>Total Item Count</h1>
-  <ul>
-    <li><%= @items.total_item_count %></li>
-  </ul>
-<h1>Average Price Per Item</h1>
-  <ul>
-    <li>$<%= @items.average_price %></li>
-  </ul>
-<h1>Item By Age</h1>
-<h2>Newest</h2>
-<ul>
-  <li><%= @items.newest_item %></li>
-</ul>
-<h2>Oldest</h2>
-<ul>
-  <li><%= @items.oldest_item %></li>
-</ul>
+<header class="jumbotron jumbotron-fluid border-top border-bottom" id="jumbo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="display-4">Items Dashboard</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="card-columns">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title h5 text-center">Total Item Count</h5>
+        <p class="card-text text-center h1">
+          <%= @items.total_item_count %>
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title h5 text-center">Average Price Per Item</h5>
+        <p class="card-text text-center h1">
+          <%= @items.average_price %>
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title h5 text-center">Item By Age</h5>
+        <p class="card-text">
+          <u>Newest</u><br />
+          Item: <a href="/items/<%= @items.newest_item.id %>"><%= @items.newest_item.name %></a><br /><br />
+          <u>Oldest</u><br />
+          Item: <a href="/items/<%= @items.oldest_item.id %>"><%= @items.oldest_item.name %></a>
+        </p>
+      </div>
+    </div>
+</main>
